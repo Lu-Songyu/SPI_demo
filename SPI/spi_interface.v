@@ -83,4 +83,6 @@ always@(posedge clk or posedge reset)
     assign spi_sclk = sclk;
     assign spi_data = MOSI;
     assign counter = count;
-end
+
+
+endmodule
