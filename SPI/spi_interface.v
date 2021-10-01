@@ -81,6 +81,6 @@ always@(posedge clk or posedge reset)
     end
 
     assign spi_sclk = sclk;
-    assign spi_data = MOSIl
+    assign spi_data = MOSI;
     assign counter = count;
 end
