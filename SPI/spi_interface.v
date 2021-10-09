@@ -9,7 +9,8 @@ module spi_state(
     input wire clk,                 // System clk
     input wire reset,               // Asynchronous system reset
     input wire cycle_wait,          // cycles to wait 
-    output wire [39:0] data,        // data bus
+
+    input wire [15:0] data,        // data bus
     output wire spi_sclk,           // SPI bus clock
     output wire spi_data,           // SPI bus data
     output wire [7:0] counter,      // count will be decremented from 40 to 0, 7 bits is needed
