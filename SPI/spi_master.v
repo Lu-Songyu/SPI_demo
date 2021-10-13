@@ -8,8 +8,8 @@ module SPI_Master
    
    // TX (MOSI) Signals
    input [39:0]  i_TX_Byte,        // Byte to transmit on MOSI
-   input        i_TX_DV,          // Data Valid Pulse with i_TX_Byte
-   output reg   o_TX_Ready,       // Transmit Ready for next byte
+   input         i_TX_DV,          // Data Valid Pulse with i_TX_Byte
+   output reg    o_TX_Ready,       // Transmit Ready for next byte
    
    // RX (MISO) Signals
    //output reg       o_RX_DV,     // Data Valid pulse (1 clock cycle)

@@ -4,29 +4,48 @@
 // LOOP THRU SPI REGISTER WRITES
 
 // FPGA is master, RF chip is slave
+`timescale 1ns / 1ps
 
 module spi_state(
+    
     input wire clk,                 // System clk
     input wire reset,               // Asynchronous system reset
     input wire cycle_wait,          // cycles to wait 
 
-    input wire [15:0] data,        // data bus
+    
     output wire spi_sclk,           // SPI bus clock
     output wire spi_data,           // SPI bus data
     output wire [7:0] counter,      // count will be decremented from 40 to 0, 7 bits is needed
-    output wire spi_cs,             // SPI chip select
+    //output wire spi_cs,              SPI chip select
  
 );
 
 // reg
 // ignore miso for now
+
 reg [39:0] MOSI;                    // SPI shift register
 reg [7:0] count;                    // control counter
 // reg cs_slave;
 reg sclk;
 reg XREADY;
-reg XRESET;                          // XRESET
+reg XWAIT;                   
 reg [2:0] state;
+
+// read data from csv: 2 byte for addr, 1 byte for data
+reg [23:0] data_in [0:367];           
+reg [9:0]  entry = 9'd368;             // 9 bit counter for read file line by line
+
+initial begin
+    
+    file = $fopen("spi_cmds_simple.csv", "r");
+    for (i=0; i<368; i++) begin
+        $fscanf(file,"%b\n", data_in[i]);
+    end
+    $fclose(file);
+
+    //$readmemb("spi_cmds_simple.csv", data_in);
+end
+
 
 always@(posedge clk or posedge reset)
     if(reset) begin
@@ -81,6 +100,7 @@ always@(posedge clk or posedge reset)
         endcase
     end
 
+    
     assign spi_sclk = sclk;
     assign spi_data = MOSI;
     assign counter = count;
