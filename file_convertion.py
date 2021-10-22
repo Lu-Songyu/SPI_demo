@@ -10,8 +10,9 @@ for line in f:
     string_list = line.split(',')
     print(string_list)
     string_list[0] = decimalToBinary(string_list[0]).zfill(16)
-    string_list[1] = decimalToBinary(string_list[1]).zfill(16)
+    string_list[1] = decimalToBinary(string_list[1]).zfill(8)
     res = ",".join(string_list) + "\n"
+    res = res.replace(',', '')
     f_new.write(res)
     
     print(string_list)

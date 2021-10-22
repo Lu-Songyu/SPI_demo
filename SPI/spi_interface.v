@@ -38,13 +38,14 @@ reg [9:0]  entry = 9'd368;          // 9 bit counter for read file line by line
 
 initial begin
     
-    file = $fopen("spi_cmds_simple.csv", "r");
+    /*file = $fopen("spi_cmds_simple.csv", "r");
     for (i=0; i<368; i++) begin
         $fscanf(file,"%b\n", data_in[i]);
     end
     $fclose(file);
+    */
 
-    //$readmemb("spi_cmds_simple.csv", data_in);
+    $readmemb("data.mem", data_in);
 end
 
 
