@@ -9,12 +9,7 @@ module tb;
   wire spi_sclk;
   wire spi_cs_l;
   wire spi_data;
-  wire [4:0] counter;
-  
-  
-  
-  // MISO word to transmit 1st = 12'b110101110011 or 12'hD73
-  // MISO word to transmit 2nd = 12'b000000000011 or 12'h3
+  wire [5:0] counter;
  
   SPI_state_machine uut(
     .clk(clk),
@@ -41,9 +36,10 @@ module tb;
     begin
       
       $dumpfile("dump.vcd"); $dumpvars;
-      #10  data_in = 16'b00000000000000000001;
-      #335 data_in = 16'b00000000000000000010;
-      #335 data_in = 16'b00000000000000000011;
-      #335 $finish;
+      #10  data_in = 24'd16777200;
+            reset = 0;
+      #815 data_in = 24'd2000;
+      #815 data_in = 24'd3000;
+      #815 $finish;
     end
 endmodule
