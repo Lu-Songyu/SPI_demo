@@ -13,3 +13,4 @@ RTL design for SPI
 ![Design](./assets/RTL.png)
 
 RTL design for SPI wrapper - pass `fileName` as parameter
+![Design](./assets/wrapper.png)
