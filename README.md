@@ -8,6 +8,8 @@ Design:
 - reformat it from 24 bits into 40 bits command
 - use shift register to send one bit at a time thru MOSI line
 
-RTL
+RTL design for SPI
 
 ![Design](./assets/RTL.png)
+
+RTL design for SPI wrapper - pass `fileName` as parameter
